@@ -1,0 +1,7 @@
+{
+  "name": "AI Job Explorer",
+  "description": "A cutting-edge job platform dedicated to the AI industry, featuring AI-powered career assistance and market insights.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
