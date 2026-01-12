@@ -20,6 +20,19 @@ export interface Course {
   url: string;
 }
 
+export interface Mentor {
+  id: string;
+  name: string;
+  title: string;
+  description: string;
+  avatar: string;
+  socials: {
+    instagram?: string;
+    website?: string;
+    twitter?: string;
+  };
+}
+
 export interface ChatMessage {
   role: 'user' | 'model';
   text: string;
@@ -32,7 +45,6 @@ export interface ToolCategory {
   color: string;
 }
 
-// Added Job interface to fix error in JobBoard.tsx
 export interface Job {
   id: string;
   title: string;
@@ -46,7 +58,6 @@ export interface Job {
   postedAt: string;
 }
 
-// Added MarketTrend interface for MarketTrends component
 export interface MarketTrend {
   name: string;
   demand: number;

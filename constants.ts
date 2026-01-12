@@ -1,32 +1,32 @@
 
-import { AIApp, Course, ToolCategory, MarketTrend } from './types';
+import { AIApp, Course, ToolCategory, MarketTrend, Mentor } from './types';
 
 export const AI_APPS: AIApp[] = [
   {
+    id: 'app-hr',
+    name: 'AI 獵才招募與文案大師',
+    category: '招募核心',
+    description: '專為 HR 與獵才顧問設計，一鍵生成高轉換率的招募職缺文案與企業品牌故事，精準過濾候選人。',
+    tags: ['招募優化', '高轉換率'],
+    icon: 'user-plus',
+    status: 'Live'
+  },
+  {
     id: 'app-video',
     name: 'AI 短影音智能體',
-    category: '內容創作',
-    description: '輸入需求即可自動生成帳號定位、腳本選題與短影音腳本。',
-    tags: ['短影音', '自動化'],
+    category: '內容行銷',
+    description: '全自動生成帳號定位、腳本選題與短影音內容，助理品牌快速獲客。',
+    tags: ['自動化', '影音增長'],
     icon: 'film',
     status: 'Live'
   },
   {
     id: 'app-yt',
     name: 'YT 頻道分析助手',
-    category: '營銷工具',
-    description: 'YouTube 頻道戰情室：深度分析爆款題材與內容增長策略。',
-    tags: ['YouTube', '大數據'],
+    category: '數據監測',
+    description: 'YouTube 頻道大數據分析，洞察競品策略與爆款關鍵字。',
+    tags: ['數據分析', '競品監測'],
     icon: 'youtube',
-    status: 'Live'
-  },
-  {
-    id: 'app-hr',
-    name: 'AI 寫作與文案大師',
-    category: '效率提升',
-    description: '快速生成高品質文案、社群貼文、以及專業文書報告。',
-    tags: ['寫作', 'GPT-4'],
-    icon: 'pen-tool',
     status: 'Live'
   }
 ];
@@ -70,6 +70,31 @@ export const COURSES: Course[] = [
     thumbnail: 'https://static.pressplay.cc/static/uploads/timeline/20240522/D838B57069E7238290295627680D9F0B/20240522105943764836.png',
     description: '解決創作瓶頸！利用 AI 智能體自動化腳本撰寫與選題，附帶工具授權。',
     url: 'https://ppa.tw/s/E009BDED'
+  }
+];
+
+export const MENTORS: Mentor[] = [
+  {
+    id: 'willy',
+    name: 'Willy 柏燁',
+    title: '科技教育講師',
+    description: '專注於科技教育與創新應用，擁有跨領域教學與實作經驗，擅長以淺顯易懂方式帶領學員理解 AI 與自動化。',
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400',
+    socials: {
+      instagram: '#',
+      website: '#'
+    }
+  },
+  {
+    id: 'nick',
+    name: 'Nick',
+    title: 'ZN Studio 創意實踐者',
+    description: '來自 ZN Studio 的創意實踐者，專注於 AI 與內容生產流程，累積多元合作經驗，擅長把工具串接為高效能的製作線，打造穩定輸出。',
+    avatar: 'https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&q=80&w=400',
+    socials: {
+      instagram: '#',
+      twitter: '#'
+    }
   }
 ];
 
