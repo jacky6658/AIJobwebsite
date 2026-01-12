@@ -3,9 +3,7 @@ import React from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import AIAgent from './components/AIAgent';
-import JobBoard from './components/JobBoard';
-import MarketTrends from './components/MarketTrends';
-import { AI_APPS, COURSES, JOBS } from './constants';
+import { AI_APPS, COURSES, TOOL_CATEGORIES } from './constants';
 
 const App: React.FC = () => {
   const TOOL_LIBRARY_URL = "https://aitools.aijob.com.tw/";
@@ -44,21 +42,30 @@ const App: React.FC = () => {
         
         {/* Tool Library Header Section */}
         <section id="tool-library" className="py-24 px-4 bg-white scroll-mt-20">
-          <div className="max-w-5xl mx-auto text-center space-y-8">
+          <div className="max-w-7xl mx-auto text-center space-y-12">
             <div className="space-y-4">
+              <span className="text-indigo-600 font-black tracking-widest text-sm uppercase">Comprehensive Ecosystem</span>
               <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight">
                 AIJob AI 工具庫
               </h2>
-              <p className="text-xl font-bold text-slate-800">
-                歡迎使用 AIJob AI 工具庫
-              </p>
-              <p className="text-slate-500 max-w-3xl mx-auto leading-relaxed font-medium">
+              <p className="text-slate-500 max-w-3xl mx-auto leading-relaxed font-medium text-lg">
                 這是一個免費提供大家使用的 AI 工具集合平台。我們精心收錄了市面上各種實用的 AI 工具與智能體，幫助你快速找到適合的工具，提升工作效率。
               </p>
             </div>
 
+            {/* Tool Category Grid */}
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+              {TOOL_CATEGORIES.map((cat, idx) => (
+                <div key={idx} className={`p-6 rounded-3xl ${cat.color} border border-transparent hover:border-current transition-all cursor-pointer group`}>
+                  <div className="text-3xl mb-3 group-hover:scale-110 transition-transform">{cat.icon}</div>
+                  <div className="font-bold text-slate-900 text-sm">{cat.title}</div>
+                  <div className="text-[10px] opacity-70 mt-1">{cat.description}</div>
+                </div>
+              ))}
+            </div>
+
             {/* YouTube Embed */}
-            <div className="mt-12 aspect-video w-full rounded-[2.5rem] overflow-hidden shadow-2xl shadow-indigo-100 border-8 border-slate-50 relative group">
+            <div className="mt-16 aspect-video w-full max-w-5xl mx-auto rounded-[2.5rem] overflow-hidden shadow-2xl shadow-indigo-100 border-8 border-slate-50 relative group">
               <iframe 
                 className="w-full h-full"
                 src="https://www.youtube.com/embed/Wqulhvlj5gk?si=7Ee_txHAo1Z-jjUW" 
@@ -70,7 +77,7 @@ const App: React.FC = () => {
               ></iframe>
             </div>
 
-            <div className="flex flex-col sm:flex-row justify-center gap-4 mt-12">
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
               <button className="px-10 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl font-black transition-all flex items-center justify-center gap-2 shadow-xl shadow-indigo-100">
                 我也要客製化 AI 應用
               </button>
@@ -80,45 +87,14 @@ const App: React.FC = () => {
                 rel="noopener noreferrer"
                 className="px-10 py-4 bg-white border-2 border-indigo-600 text-indigo-600 hover:bg-indigo-50 rounded-2xl font-black transition-all flex items-center justify-center gap-2"
               >
-                查看更多 AI 應用工具
+                進入 AI 工具庫官網
               </a>
             </div>
           </div>
         </section>
 
-        {/* AI Job Board & Market Section */}
-        <section id="jobs" className="py-24 px-4 bg-slate-50 scroll-mt-20">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-              <div className="lg:col-span-2 space-y-8">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h2 className="text-3xl font-black text-slate-900">熱門 AI 職缺</h2>
-                    <p className="text-slate-500 font-medium">尋找下一代 AI 驅動的職業機會</p>
-                  </div>
-                  <button className="text-indigo-600 font-bold hover:underline">查看全部職缺</button>
-                </div>
-                <JobBoard jobs={JOBS} />
-              </div>
-              <div className="space-y-8">
-                <h2 className="text-3xl font-black text-slate-900">市場趨勢分析</h2>
-                <MarketTrends />
-                <div className="p-8 bg-indigo-600 rounded-[2.5rem] text-white shadow-xl shadow-indigo-200">
-                  <h4 className="text-xl font-bold mb-4">想要成為 AI 專才？</h4>
-                  <p className="text-indigo-100 text-sm mb-6 leading-relaxed">
-                    加入我們的培訓課程，掌握最前沿的 AI 工具應用，提升您的市場競爭力。
-                  </p>
-                  <a href="#courses" className="inline-block w-full text-center py-3 bg-white text-indigo-600 rounded-xl font-black hover:bg-indigo-50 transition-colors">
-                    探索課程
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* AI Apps Grid */}
-        <section id="apps" className="py-24 px-4 bg-white scroll-mt-20">
+        <section id="apps" className="py-24 px-4 bg-slate-50 scroll-mt-20">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16 space-y-4">
               <h2 className="text-4xl font-black text-slate-900">精選 AI 小程式</h2>
@@ -154,7 +130,7 @@ const App: React.FC = () => {
         </section>
 
         {/* About Section */}
-        <section id="about" className="py-24 px-4 bg-slate-50 scroll-mt-20">
+        <section id="about" className="py-24 px-4 bg-white scroll-mt-20">
           <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
             <div className="space-y-6">
               <h2 className="text-3xl font-extrabold text-indigo-600 uppercase tracking-tight">
@@ -164,29 +140,27 @@ const App: React.FC = () => {
                 在 AIJOB，我們相信 AI 不僅僅是工具，更是人類創造力的延伸。我們專注於研發具備深度的 <strong>客製化 AI 智能體</strong>，並致力於透過高品質的 <strong>實戰培訓</strong>，讓每個人都能駕馭這項強大的技術。
               </p>
               <div className="grid grid-cols-2 gap-4 pt-4">
-                <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm">
-                  <div className="text-3xl font-black text-indigo-600">10+</div>
-                  <div className="text-xs text-slate-400 uppercase tracking-widest font-bold mt-1">開發中智能體</div>
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-100 shadow-sm">
+                  <div className="text-3xl font-black text-indigo-600">500+</div>
+                  <div className="text-xs text-slate-400 uppercase tracking-widest font-bold mt-1">收錄工具</div>
                 </div>
-                <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm">
-                  <div className="text-3xl font-black text-cyan-500">500+</div>
-                  <div className="text-xs text-slate-400 uppercase tracking-widest font-bold mt-1">結訓學員</div>
+                <div className="p-6 rounded-2xl bg-slate-50 border border-slate-100 shadow-sm">
+                  <div className="text-3xl font-black text-cyan-500">5000+</div>
+                  <div className="text-xs text-slate-400 uppercase tracking-widest font-bold mt-1">月活躍用戶</div>
                 </div>
               </div>
             </div>
-            <div className="relative bg-white rounded-3xl p-8 border border-slate-200 shadow-xl shadow-slate-200/50">
-              <blockquote className="text-xl italic text-slate-700 leading-relaxed">
+            <div className="relative bg-indigo-600 rounded-[3rem] p-12 text-white shadow-2xl shadow-indigo-200">
+              <blockquote className="text-2xl font-bold italic leading-relaxed">
                 "我們不只是跟隨趨勢，我們在創造能與您共同進化的數位生命體。"
               </blockquote>
               <div className="mt-8 flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-slate-900 flex items-center justify-center font-black text-white shadow-lg">
-                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 4L4 20H20L12 4Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
+                <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center font-black text-indigo-600 shadow-lg">
+                  AI
                 </div>
                 <div>
-                  <div className="font-bold text-slate-900">AIJOB Team</div>
-                  <div className="text-sm text-slate-500 font-medium">致力於 AI 民主化與普及</div>
+                  <div className="font-bold">AIJOB Team</div>
+                  <div className="text-indigo-200 text-sm">致力於 AI 應用普及化</div>
                 </div>
               </div>
             </div>
@@ -194,7 +168,7 @@ const App: React.FC = () => {
         </section>
 
         {/* Courses Section */}
-        <section id="courses" className="py-24 px-4 bg-white scroll-mt-20">
+        <section id="courses" className="py-24 px-4 bg-slate-50 scroll-mt-20">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16 space-y-4">
               <h2 className="text-3xl font-black text-slate-900 uppercase tracking-tight">精選培訓課程</h2>

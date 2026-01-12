@@ -17,7 +17,7 @@ export interface Course {
   price: string;
   thumbnail: string;
   description: string;
-  url: string; // Added to support external links
+  url: string;
 }
 
 export interface ChatMessage {
@@ -25,7 +25,14 @@ export interface ChatMessage {
   text: string;
 }
 
-// Fixed: Added Job interface for JobBoard.tsx
+export interface ToolCategory {
+  title: string;
+  description: string;
+  icon: string;
+  color: string;
+}
+
+// Added Job interface to fix error in JobBoard.tsx
 export interface Job {
   id: string;
   title: string;
@@ -37,4 +44,11 @@ export interface Job {
   type: string;
   description: string;
   postedAt: string;
+}
+
+// Added MarketTrend interface for MarketTrends component
+export interface MarketTrend {
+  name: string;
+  demand: number;
+  salary: number;
 }

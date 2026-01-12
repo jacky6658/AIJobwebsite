@@ -1,73 +1,43 @@
 
-import { AIApp, Course, Job } from './types';
+import { AIApp, Course, ToolCategory, MarketTrend } from './types';
 
 export const AI_APPS: AIApp[] = [
   {
     id: 'app-video',
     name: 'AI 短影音智能體',
-    category: 'AI 員工',
+    category: '內容創作',
     description: '輸入需求即可自動生成帳號定位、腳本選題與短影音腳本。',
-    tags: ['短影音'],
+    tags: ['短影音', '自動化'],
     icon: 'toolbox',
     status: 'Live'
   },
   {
     id: 'app-yt',
-    name: 'YT 頻道戰情室智能體',
-    category: 'AI 員工',
-    description: 'YouTube 頻道戰情室：分析爆款、題材與內容策略。',
-    tags: ['YouTube', 'YT', '頻道分析'],
+    name: 'YT 頻道分析助手',
+    category: '營銷工具',
+    description: 'YouTube 頻道戰情室：深度分析爆款題材與內容增長策略。',
+    tags: ['YouTube', '大數據'],
     icon: 'toolbox',
     status: 'Live'
   },
   {
     id: 'app-hr',
-    name: 'AI 人資招募智能體',
-    category: 'AI 員工',
-    description: '快速生成職缺描述、面試問題與人才畫像分析。',
-    tags: ['HR', '面試題目'],
+    name: 'AI 寫作與文案大師',
+    category: '效率提升',
+    description: '快速生成高品質文案、社群貼文、以及專業文書報告。',
+    tags: ['寫作', 'GPT-4'],
     icon: 'toolbox',
     status: 'Live'
   }
 ];
 
-export const JOBS: Job[] = [
-  {
-    id: '1',
-    title: 'AI 提示工程師 (Prompt Engineer)',
-    company: 'AIJOB 實驗室',
-    logo: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=200',
-    salary: '80,000 - 120,000 TWD',
-    location: '台北市 (遠端可)',
-    category: '技術開發',
-    type: '全職',
-    description: '負責優化大型語言模型（LLM）的提示詞輸出，提升 AI 智能體在不同商務場景的表現。',
-    postedAt: '2 小時前'
-  },
-  {
-    id: '2',
-    title: 'AI 產品經理',
-    company: '未來科技',
-    logo: 'https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&q=80&w=200',
-    salary: '70,000 - 100,000 TWD',
-    location: '新竹市',
-    category: '產品管理',
-    type: '全職',
-    description: '協調工程團隊與商務團隊，將 AI 技術轉化為可商業化的 SaaS 產品。',
-    postedAt: '昨天'
-  },
-  {
-    id: '3',
-    title: 'AI 自動化行銷顧問',
-    company: '智慧行銷代理',
-    logo: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=200',
-    salary: '60,000 - 90,000 TWD',
-    location: '台中市',
-    category: '數位行銷',
-    type: '兼職/接案',
-    description: '協助客戶建立基於 AI 的自動化行銷工作流，包含內容生成與廣告投放自動化。',
-    postedAt: '3 天前'
-  }
+export const TOOL_CATEGORIES: ToolCategory[] = [
+  { title: '寫作助手', description: '文案生成、SEO優化', icon: '✍️', color: 'bg-blue-50 text-blue-600' },
+  { title: '影像生成', description: 'AI繪圖、照片處理', icon: '🎨', color: 'bg-purple-50 text-purple-600' },
+  { title: '影音創作', description: '影片剪輯、AI配音', icon: '🎬', color: 'bg-red-50 text-red-600' },
+  { title: '辦公效率', description: '數據分析、簡報製作', icon: '📊', color: 'bg-emerald-50 text-emerald-600' },
+  { title: '程式開發', description: '代碼生成、技術支援', icon: '💻', color: 'bg-slate-50 text-slate-600' },
+  { title: '營銷增長', description: '社群管理、廣告投放', icon: '🚀', color: 'bg-orange-50 text-orange-600' },
 ];
 
 export const COURSES: Course[] = [
@@ -103,10 +73,11 @@ export const COURSES: Course[] = [
   }
 ];
 
-export const MARKET_TRENDS = [
-  { name: 'AI 研發', demand: 85, salary: 120 },
-  { name: '提示詞工程', demand: 70, salary: 90 },
-  { name: 'RAG 系統架構', demand: 90, salary: 130 },
-  { name: '智能法律', demand: 45, salary: 95 },
-  { name: '行銷自動化', demand: 60, salary: 80 }
+// Added MARKET_TRENDS to fix error in MarketTrends.tsx
+export const MARKET_TRENDS: MarketTrend[] = [
+  { name: 'AI 訓練師', demand: 85, salary: 120 },
+  { name: '智能體開發', demand: 95, salary: 150 },
+  { name: '提示工程師', demand: 70, salary: 95 },
+  { name: '數據科學家', demand: 80, salary: 130 },
+  { name: '自動化專員', demand: 90, salary: 110 },
 ];

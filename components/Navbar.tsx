@@ -17,7 +17,6 @@ const Navbar: React.FC = () => {
     { name: '首頁', href: '#' },
     { name: '關於我們', href: '#about' },
     { name: 'AI工具庫', href: '#tool-library' },
-    { name: 'AI職缺', href: '#jobs' },
     { name: 'AI小程式', href: '#apps' },
     { name: '實戰培訓', href: '#courses' },
   ];
@@ -55,7 +54,7 @@ const Navbar: React.FC = () => {
               </a>
             ))}
             <button className="bg-indigo-600 text-white px-6 py-2.5 rounded-xl font-black text-sm hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-100 active:scale-95">
-              立即諮詢
+              聯絡我們
             </button>
           </div>
 
@@ -92,7 +91,7 @@ const Navbar: React.FC = () => {
           ))}
           <div className="pt-4 px-3">
             <button className="w-full bg-indigo-600 text-white py-3 rounded-xl font-black text-center">
-              立即諮詢
+              聯絡我們
             </button>
           </div>
         </div>
