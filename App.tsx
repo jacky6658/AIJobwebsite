@@ -4,6 +4,13 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import AIAgent from './components/AIAgent';
 import { AI_APPS, COURSES, TOOL_CATEGORIES } from './constants';
+import * as Icons from 'lucide-react';
+
+const DynamicIcon = ({ name, className }: { name: string; className?: string }) => {
+  const iconName = name.split('-').map(part => part.charAt(0).toUpperCase() + part.slice(1)).join('') as keyof typeof Icons;
+  const IconComponent = (Icons[iconName] || Icons.Box) as React.ElementType;
+  return <IconComponent className={className} />;
+};
 
 const App: React.FC = () => {
   const TOOL_LIBRARY_URL = "https://aitools.aijob.com.tw/";
@@ -12,25 +19,6 @@ const App: React.FC = () => {
   const handleImageError = (e: React.SyntheticEvent<HTMLImageElement, Event>) => {
     const target = e.target as HTMLImageElement;
     target.src = `https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800`;
-  };
-
-  const renderIcon = (type: string) => {
-    switch (type) {
-      case 'toolbox':
-        return (
-          <div className="w-16 h-16 bg-slate-900 rounded-2xl flex items-center justify-center border-2 border-amber-400/30 shadow-inner">
-            <svg className="w-9 h-9 text-amber-400" fill="currentColor" viewBox="0 0 24 24">
-               <path d="M20 8h-3V6c0-1.1-.9-2-2-2H9c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6h6v2H9V6zm11 14H4v-7h16v7zm0-9H4v-1h16v1zm-7 3h-2v2h2v-2z"/>
-            </svg>
-          </div>
-        );
-      default:
-        return (
-          <svg className="w-10 h-10 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
-          </svg>
-        );
-    }
   };
 
   return (
@@ -54,18 +42,20 @@ const App: React.FC = () => {
             </div>
 
             {/* Tool Category Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
               {TOOL_CATEGORIES.map((cat, idx) => (
-                <div key={idx} className={`p-6 rounded-3xl ${cat.color} border border-transparent hover:border-current transition-all cursor-pointer group`}>
-                  <div className="text-3xl mb-3 group-hover:scale-110 transition-transform">{cat.icon}</div>
-                  <div className="font-bold text-slate-900 text-sm">{cat.title}</div>
-                  <div className="text-[10px] opacity-70 mt-1">{cat.description}</div>
+                <div key={idx} className={`p-8 rounded-[2.5rem] ${cat.color} border border-transparent hover:border-current hover:shadow-xl hover:shadow-current/5 transition-all cursor-pointer group flex flex-col items-center`}>
+                  <div className="p-4 bg-white/50 rounded-2xl mb-4 group-hover:scale-110 transition-transform">
+                    <DynamicIcon name={cat.icon} className="w-8 h-8" />
+                  </div>
+                  <div className="font-bold text-slate-900 text-base">{cat.title}</div>
+                  <div className="text-xs opacity-70 mt-2 font-medium">{cat.description}</div>
                 </div>
               ))}
             </div>
 
             {/* YouTube Embed */}
-            <div className="mt-16 aspect-video w-full max-w-5xl mx-auto rounded-[2.5rem] overflow-hidden shadow-2xl shadow-indigo-100 border-8 border-slate-50 relative group">
+            <div className="mt-16 aspect-video w-full max-w-5xl mx-auto rounded-[3rem] overflow-hidden shadow-2xl shadow-indigo-100 border-8 border-slate-50 relative group">
               <iframe 
                 className="w-full h-full"
                 src="https://www.youtube.com/embed/Wqulhvlj5gk?si=7Ee_txHAo1Z-jjUW" 
@@ -104,12 +94,14 @@ const App: React.FC = () => {
               {AI_APPS.map(app => (
                 <div key={app.id} className="group flex flex-col h-full bg-white border border-slate-100 p-10 rounded-[3rem] hover:border-indigo-200 hover:shadow-2xl hover:shadow-indigo-500/5 transition-all duration-500 relative">
                   <div className="flex justify-center mb-8 transform group-hover:scale-110 transition-transform duration-500">
-                    {renderIcon(app.icon)}
+                    <div className="w-16 h-16 bg-slate-900 rounded-2xl flex items-center justify-center border-2 border-amber-400/30 shadow-inner">
+                      <DynamicIcon name={app.icon} className="w-8 h-8 text-amber-400" />
+                    </div>
                   </div>
                   <div className="text-center space-y-4 flex-grow">
                     <h3 className="text-2xl font-black text-slate-900">{app.name}</h3>
                     <div className="text-indigo-600 font-bold text-sm">{app.category}</div>
-                    <p className="text-slate-500 text-sm leading-relaxed max-w-[240px] mx-auto">
+                    <p className="text-slate-500 text-sm leading-relaxed max-w-[240px] mx-auto font-medium">
                       {app.description}
                     </p>
                   </div>
@@ -120,7 +112,7 @@ const App: React.FC = () => {
                   </div>
                   <div className="mt-10 pt-8 border-t border-slate-50">
                     <a href={TOOL_LIBRARY_URL} target="_blank" rel="noopener noreferrer" className="w-full py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl font-black transition-all flex items-center justify-center gap-2 shadow-lg shadow-indigo-100">
-                      立即體驗 <span>→</span>
+                      立即體驗 <DynamicIcon name="arrow-right" className="w-4 h-4" />
                     </a>
                   </div>
                 </div>
@@ -155,7 +147,7 @@ const App: React.FC = () => {
                 "我們不只是跟隨趨勢，我們在創造能與您共同進化的數位生命體。"
               </blockquote>
               <div className="mt-8 flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center font-black text-indigo-600 shadow-lg">
+                <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center font-black text-indigo-600 shadow-lg uppercase">
                   AI
                 </div>
                 <div>
@@ -199,13 +191,13 @@ const App: React.FC = () => {
                       <h3 className="text-xl font-extrabold text-slate-900 leading-tight min-h-[3rem] group-hover:text-indigo-600 transition-colors">
                         {course.title}
                       </h3>
-                      <p className="text-slate-500 text-sm leading-relaxed line-clamp-3">
+                      <p className="text-slate-500 text-sm leading-relaxed line-clamp-3 font-medium">
                         {course.description}
                       </p>
                     </div>
                     <div className="mt-8 pt-6 border-t border-slate-100">
                       <a href={course.url} target="_blank" rel="noopener noreferrer" className="w-full py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-2xl font-black text-sm transition-all flex items-center justify-center gap-2 shadow-lg active:scale-95">
-                        了解課程詳情 <span>→</span>
+                        了解課程詳情 <DynamicIcon name="arrow-right" className="w-4 h-4" />
                       </a>
                     </div>
                   </div>

@@ -8,7 +8,7 @@ export const AI_APPS: AIApp[] = [
     category: '內容創作',
     description: '輸入需求即可自動生成帳號定位、腳本選題與短影音腳本。',
     tags: ['短影音', '自動化'],
-    icon: 'toolbox',
+    icon: 'film',
     status: 'Live'
   },
   {
@@ -17,7 +17,7 @@ export const AI_APPS: AIApp[] = [
     category: '營銷工具',
     description: 'YouTube 頻道戰情室：深度分析爆款題材與內容增長策略。',
     tags: ['YouTube', '大數據'],
-    icon: 'toolbox',
+    icon: 'youtube',
     status: 'Live'
   },
   {
@@ -26,18 +26,18 @@ export const AI_APPS: AIApp[] = [
     category: '效率提升',
     description: '快速生成高品質文案、社群貼文、以及專業文書報告。',
     tags: ['寫作', 'GPT-4'],
-    icon: 'toolbox',
+    icon: 'pen-tool',
     status: 'Live'
   }
 ];
 
 export const TOOL_CATEGORIES: ToolCategory[] = [
-  { title: '寫作助手', description: '文案生成、SEO優化', icon: '✍️', color: 'bg-blue-50 text-blue-600' },
-  { title: '影像生成', description: 'AI繪圖、照片處理', icon: '🎨', color: 'bg-purple-50 text-purple-600' },
-  { title: '影音創作', description: '影片剪輯、AI配音', icon: '🎬', color: 'bg-red-50 text-red-600' },
-  { title: '辦公效率', description: '數據分析、簡報製作', icon: '📊', color: 'bg-emerald-50 text-emerald-600' },
-  { title: '程式開發', description: '代碼生成、技術支援', icon: '💻', color: 'bg-slate-50 text-slate-600' },
-  { title: '營銷增長', description: '社群管理、廣告投放', icon: '🚀', color: 'bg-orange-50 text-orange-600' },
+  { title: '寫作助手', description: '文案生成、SEO優化', icon: 'edit-3', color: 'bg-blue-50 text-blue-600' },
+  { title: '影像生成', description: 'AI繪圖、照片處理', icon: 'image', color: 'bg-purple-50 text-purple-600' },
+  { title: '影音創作', description: '影片剪輯、AI配音', icon: 'video', color: 'bg-rose-50 text-rose-600' },
+  { title: '辦公效率', description: '數據分析、簡報製作', icon: 'layout', color: 'bg-emerald-50 text-emerald-600' },
+  { title: '程式開發', description: '代碼生成、技術支援', icon: 'code', color: 'bg-slate-50 text-slate-600' },
+  { title: '營銷增長', description: '社群管理、廣告投放', icon: 'rocket', color: 'bg-orange-50 text-orange-600' },
 ];
 
 export const COURSES: Course[] = [
@@ -73,7 +73,6 @@ export const COURSES: Course[] = [
   }
 ];
 
-// Added MARKET_TRENDS to fix error in MarketTrends.tsx
 export const MARKET_TRENDS: MarketTrend[] = [
   { name: 'AI 訓練師', demand: 85, salary: 120 },
   { name: '智能體開發', demand: 95, salary: 150 },
